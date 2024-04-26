@@ -22,12 +22,13 @@ from graphql_auth import mutations
 from graphql_auth.schema import UserQuery, MeQuery
 from django.views.decorators.csrf import csrf_exempt
 
-from user.schema import AuthMutation
+from user.schema import AuthMutation, UserQuery
+from menu.schema import MenuMutation, MenuQuery
 
-class Query(UserQuery, MeQuery, graphene.ObjectType):
+class Query(UserQuery, MenuQuery, graphene.ObjectType):
     pass
 
-class Mutation(AuthMutation, graphene.ObjectType):
+class Mutation(AuthMutation, MenuMutation, graphene.ObjectType):
    pass
 
 schema = graphene.Schema(query=Query, mutation=Mutation)

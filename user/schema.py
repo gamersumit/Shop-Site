@@ -12,3 +12,5 @@ class AuthMutation(graphene.ObjectType):
    password_reset = mutations.PasswordReset.Field()
    password_change = mutations.PasswordChange.Field()
 
+class UserQuery(UserQuery, MeQuery, graphene.ObjectType):
+    pass

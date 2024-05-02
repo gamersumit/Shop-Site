@@ -16,12 +16,12 @@ class Category(models.Model):
       
 class Item(models.Model):
   ''' Product/Item Model to query data releated to Product/Item 
-  of the resturant maintained by Restuarant Owner/Admin'''
+  of the resturant maintained by Restuarant Owner/Admin '''
   
   id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-  name = models.CharField(max_length=255, verbose_name = 'ITEM NAME', blank=False, null=False)
+  name = models.CharField(unique=True, max_length=255, verbose_name = 'ITEM NAME', blank=False, null=False)
   price = models.PositiveIntegerField(verbose_name='ITEM PRICE')
-  category = models.ForeignKey(Category, related_name = 'item', on_delete=models.SET_NULL, null = True, blank=True)
+  category = models.ManyToManyField(Category, related_name = 'item', blank=True)
   is_deleted = models.BooleanField(default=False, verbose_name='SOFT DELETE')
   
   def __str__(self):

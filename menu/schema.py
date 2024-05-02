@@ -1,15 +1,17 @@
+from ast import arguments
 from importlib.metadata import requires
+from re import T
 from turtle import update
 from unicodedata import category
 import graphene
 from graphene_django import DjangoObjectType
-from graphene_django_cud.mutations import DjangoDeleteMutation
+from graphene_django_cud import mutations
 from .models import Category, Item
 from django_graphene_permissions.permissions import IsAuthenticated
 from django_graphene_permissions import permissions_checker
 from user.permissions import AdminPermission
 
- 
+# queryies 
 class ItemType(DjangoObjectType):
   '''
   To Query on Category Table 
@@ -48,6 +50,7 @@ class MenuQuery(graphene.ObjectType):
         return Item.objects.all()
 
 
+# category --->
 class CreateCategory(graphene.Mutation):
   class Arguments:
     name = graphene.String(required = True)
@@ -91,13 +94,99 @@ class UpdateCategory(graphene.Mutation):
     except Exception as e:
       raise UpdateCategory(success=False, errors=[str(e)], category=None)
 
-class DeleteCategory(DjangoDeleteMutation):
-  class Meta:
-        model = Category
-        permissions = [IsAuthenticated]
+class DeleteCategory(graphene.Mutation):
+  class Arguments:
+       name = graphene.String(required = True)
+  
+  found = graphene.Boolean()
+  deleted_key = graphene.String()
+  
+  @permissions_checker([AdminPermission])
+  def mutate(self, info, name):
+    try : 
+      category = Category.objects.get(name=name)
+      category.delete()
+      return DeleteCategory(found = True, category=name)
+    
+    except Exception as e:
+      raise DeleteCategory(found = False, category=None)
 
+
+
+# item --->
+class CreateItems(mutations.DjangoBatchCreateMutation):
+    class Meta:
+      model = Item
+      only_fields = ['name', 'category', 'price']
+      optional_fields = ('category',)
+      return_field_name = 'items'
+      permissions = [AdminPermission]
+
+class DeleteItems(mutations.DjangoBatchDeleteMutation):
+  class Meta:
+    model = Item
+    permissions = [AdminPermission]
+
+class UpdateItem(graphene.Mutation):
+    class Arguments:
+      id = graphene.ID(required = True)
+      name = graphene.String()
+      price = graphene.Int()
+      deleted_categories = graphene.List(graphene.String)
+      added_categories = graphene.List(graphene.String)
+  
+    item = graphene.Field(ItemType)
+    errors = graphene.List(graphene.String)
+    success = graphene.Boolean()
+
+    @permissions_checker([IsAuthenticated])
+    def mutate(self, info, **kwargs):
+      # update 
+      try : 
+        id = kwargs['id']
+        name = kwargs.get('name')
+        price = kwargs.get('price')
+        deleted_categories = kwargs.get('deleted_categories', [])
+        added_categories = kwargs.get('added_categories', [])
+        item = Item.objects.get(id = id)
+        
+        if name:
+          item.name = name
+        
+        if price:
+          item.price = price
+        
+        if len(deleted_categories) != 0 and item.category:
+          for category in deleted_categories:
+            try :
+              item.category.remove(category)
+            except :
+              continue
+            
+        if len(added_categories) != 0:
+          if not item.category :
+            item.category = added_categories
+          
+          else:
+            for category in added_categories:
+              try :
+                  item.category.add(category)    
+              except Exception as e:
+                continue
+            
+        item.save()
+        return UpdateItems(success=True, errors=None, item = item)
+      
+      except Exception as e:
+        raise UpdateItems(success=False, errors=[str(e)], item = None)
+
+
+# menu
 class MenuMutation(graphene.ObjectType):
   create_category = CreateCategory.Field()
   update_category = UpdateCategory.Field()
   delete_category = DeleteCategory.Field()
+  create_items = CreateItems.Field()
+  delete_items = DeleteItems.Field()
+  update_items = UpdateItem.Field()
 

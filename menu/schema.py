@@ -1,15 +1,10 @@
-from ast import arguments
-from importlib.metadata import requires
-from re import T
-from turtle import update
-from unicodedata import category
 import graphene
 from graphene_django import DjangoObjectType
 from graphene_django_cud import mutations
 from .models import Category, Item
 from django_graphene_permissions.permissions import IsAuthenticated
 from django_graphene_permissions import permissions_checker
-from user.permissions import AdminPermission
+from permissions import AdminPermission
 
 # queryies 
 class ItemType(DjangoObjectType):
@@ -175,10 +170,10 @@ class UpdateItem(graphene.Mutation):
                 continue
             
         item.save()
-        return UpdateItems(success=True, errors=None, item = item)
+        return UpdateItem(success=True, errors=None, item = item)
       
       except Exception as e:
-        raise UpdateItems(success=False, errors=[str(e)], item = None)
+        raise UpdateItem(success=False, errors=[str(e)], item = None)
 
 
 # menu
@@ -188,5 +183,5 @@ class MenuMutation(graphene.ObjectType):
   delete_category = DeleteCategory.Field()
   create_items = CreateItems.Field()
   delete_items = DeleteItems.Field()
-  update_items = UpdateItem.Field()
+  update_item = UpdateItem.Field()
 

@@ -1,3 +1,4 @@
+from unicodedata import category
 import graphene
 from graphene_django import DjangoObjectType
 from graphene_django_cud import mutations
@@ -26,6 +27,14 @@ class CartQuery(graphene.ObjectType):
       if not info.context.user.is_authenticated:
           raise GraphQLError("You must be authenticated to access this resource.")
       return Cart.objects.filter(user = info.context.user)
+
+
+class AddToCart(mutations.DjangoBatchCreateMutation):
+    class Meta:
+      model = Cart
+      only_fields = ['item', 'quantity']
+      auto_context_fields = {'user' : 'user'}
+      permissions = [IsAuthenticated]
 
 
 
@@ -164,8 +173,7 @@ class CartQuery(graphene.ObjectType):
 
 # # menu
 class CartMutation(graphene.ObjectType):
-  pass
-#   create_category = CreateCategory.Field()
+  add_to_cart = AddToCart.Field()
 #   update_category = UpdateCategory.Field()
 #   delete_category = DeleteCategory.Field()
 #   create_items = CreateItems.Field()

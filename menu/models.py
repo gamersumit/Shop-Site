@@ -22,7 +22,7 @@ class Item(models.Model):
   name = models.CharField(unique=True, max_length=255, verbose_name = 'ITEM NAME', blank=False, null=False)
   price = models.PositiveIntegerField(verbose_name='ITEM PRICE')
   category = models.ManyToManyField(Category, related_name = 'item', blank=True)
-  is_deleted = models.BooleanField(default=False, verbose_name='SOFT DELETE')
+  is_deleted = models.BooleanField(default=False, verbose_name='SOFT DELETE ITEM')
   
   def __str__(self):
     return self.name

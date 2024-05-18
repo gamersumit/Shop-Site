@@ -87,7 +87,7 @@ class UpdateCategory(graphene.Mutation):
       return UpdateCategory(success=True, errors=None, category=new_name)
     
     except Exception as e:
-      raise UpdateCategory(success=False, errors=[str(e)], category=None)
+      return UpdateCategory(success=False, errors=[str(e)], category=None)
 
 class DeleteCategory(graphene.Mutation):
   class Arguments:
@@ -101,10 +101,10 @@ class DeleteCategory(graphene.Mutation):
     try : 
       category = Category.objects.get(name=name)
       category.delete()
-      return DeleteCategory(found = True, category=name)
+      return DeleteCategory(found = True, deleted_key=name)
     
     except Exception as e:
-      raise DeleteCategory(found = False, category=None)
+      return DeleteCategory(found = False, deleted_key=None)
 
 
 

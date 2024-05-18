@@ -14,5 +14,10 @@ class Cart(models.Model):
   user = models.ForeignKey(ExtendUser, related_name='user', on_delete=models.CASCADE)
   quantity = models.PositiveIntegerField(null=False, blank=False)
   
+  class Meta:
+     constraints = [
+            models.UniqueConstraint(fields=['item', 'user'], name='unique_item_user')
+        ]
+
   def __str__(self):
     return f"{self.item} : {self.quantity}"

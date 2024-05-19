@@ -343,33 +343,117 @@ tokenAuth(password: "********", username : "username"){
 }
 }</code></pre>
 
-<h5>Place Order:</h5>
+<h5>CREATE CATEGORY:</h5>
 <pre><code>mutation {
-placeOrder {
-    order {
-        id
-        orderedAt
-        totalAmount
-    }
+createCategory{
+    category
+    errors
+    success
 }
 }</code></pre>
 
-<h5>Add to Cart:</h5>
-<pre><code>mutation($itemId: ID!, $quantity: Int!) {
-addToCart(itemId: $itemId, quantity: $quantity) {
+<h5>UPDATE CATEGORY:</h5>
+<pre><code>mutation {
+updateCategory(oldNmae: "old", newName: "new"){
+    category
+    errors
+    success
+}
+}</code></pre>
+
+<h5>DELETE CATEGORY:</h5>
+<pre><code>mutation {
+updateCategory(name: "new"){
+    found
+    deletedKey
+}
+}</code></pre>
+
+<h5>CREATE ITEMS:</h5>
+<pre><code>mutation{
+createItems(input: [{name : "ITEM1", price : 100, category : ["A", "B"]}, {name : "ITEM2", price:130, category : ["C"]}]){
+            items{
+              id
+              name
+              price
+              category{
+                name
+              }
+            }
+          }
+}</code></pre>
+
+<h5>UPDATE ITEM:</h5>
+<pre><code>mutation {
+updateCategory(id: "id", name: "newname", "price" : 200, deletedCategories : ["A", "B"], addedCategories: ["C", "D"]){
+    item{
+    id
+    name
+    price
+    category{
+      name
+    }
+    }
+    errors
+    success
+}
+}</code></pre>
+
+<h5>DELETE ITEMS:</h5>
+<pre><code>mutation {
+deleteItems(ids: ["item1", "item2"]){
+    deleteCount
+    deletedlds
+    misseddlds
+}
+}</code></pre>
+
+<h5>ADD TO CART:</h5>
+<pre><code>mutation{
+addToCart(id: $itemId, quantity: $quantity) {
+    errors
+    success
     cart {
         id
-        items {
+        quantity
+        item{
             id
-            item {
-                name
-                price
+            name
+            price
+            category{
+              name
             }
-            quantity
         }
     }
 }
 }</code></pre>
+
+<h5>PLACE ORDER:</h5>
+<pre><code>mutation {
+placeOrder {
+    success
+    errors
+    orderDetails{
+      id
+      orderedAt
+      subtotalAmount
+      taxAmount
+      taxRate
+      discountAmount
+      discountRate
+      totalAmount
+      orderItems{
+        item{
+          id
+          name
+        }
+        price
+        quantity
+      }
+    }
+}
+}</code></pre>
+
 
 
 <h3>Contributing</h3>

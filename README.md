@@ -1,7 +1,10 @@
 # Shop Site Project : 
 
-@ Overview @
+# Overview 
+
 This project is an online shop site built using Django and GraphQL. It offers functionalities for user authentication, item and category management, shopping cart operations, and order processing. The admin has control over the menu items, while users can interact with the cart and place orders.
+
+<h1>Note: </h1> This project provides only the backend functionalities. A separate frontend application would be needed to interact with this backend.
 
 Features
 User Authentication:

@@ -66,7 +66,7 @@ This project provides only the backend functionalities. A separate frontend appl
         </ul>
     </li>
 </ol>
-<p><br><br><br><br></p>
+<p><br><br></p>
 <h3>Technologies Used</h3>
 <ul>
     <li><h5>Django</h5></li>
@@ -74,7 +74,7 @@ This project provides only the backend functionalities. A separate frontend appl
     <li><h5>DjangoObjectType (Graphene-Django)</h5></li>
     <li><h5>SQL</h5></li>
 </ul>
-<p><br><br><br><br></p>
+<p><br><br></p>
 <h3>Installation (MAC/LINUX/WINDOWS):</h3>
 <ol>
     <li>
@@ -123,7 +123,7 @@ This project provides only the backend functionalities. A separate frontend appl
         </ul>
     </li>
 </ol>
-<p><br><br><br><br></p>
+<p><br><br></p>
 <h3>Usage:</h3>
 <ol>
 <li><h5>User Authentication</h5>
@@ -151,7 +151,7 @@ This project provides only the backend functionalities. A separate frontend appl
 </ul>
 </li>
 </ol>
-<p><br><br><br><br></p>
+<p><br><br></p>
 <h3>GraphQL API</h3>
 
 <h4>Queries</h4>

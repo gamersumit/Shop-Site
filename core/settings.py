@@ -14,6 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 from datetime import timedelta
+from decimal import  Decimal 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'user',
     'menu',
     'cart',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -96,17 +98,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DB_NAME'),
+#         'HOST': os.getenv('DB_HOST'),
+#         'USER': os.getenv('DB_USER'),
+#         'PORT': os.getenv('DB_PORT'),
+#         'PASSWORD': os.getenv('DB_PASSWORD')
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'HOST': os.getenv('DB_HOST'),
-        'USER': os.getenv('DB_USER'),
-        'PORT': os.getenv('DB_PORT'),
-        'PASSWORD': os.getenv('DB_PASSWORD')
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -188,8 +196,6 @@ GRAPHQL_JWT = {
 
 
 
-
-
 # # MAIL
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAI_HOST = os.getenv('EMAI_HOST')
@@ -197,3 +203,8 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER') 
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+
+# Tax rate
+TAX_RATE = Decimal( os.getenv('TAX_RATE', 5.0))
+DISCOUNT_RATE = Decimal(os.getenv('DISCOUNT_RATE', 0.0))

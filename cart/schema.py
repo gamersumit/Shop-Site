@@ -21,162 +21,66 @@ class CartType(DjangoObjectType):
 
 
 class CartQuery(graphene.ObjectType):
-    cart_items = graphene.List(CartType)
+    cart = graphene.List(CartType)
     
-    def resolve_cart_items(self, info):
+    def resolve_cart(self, info):
       if not info.context.user.is_authenticated:
           raise GraphQLError("You must be authenticated to access this resource.")
       return Cart.objects.filter(user = info.context.user)
 
 
-class AddToCart(mutations.DjangoBatchCreateMutation):
-    class Meta:
-      model = Cart
-      only_fields = ['item', 'quantity']
-      auto_context_fields = {'user' : 'user'}
-      permissions = [IsAuthenticated]
+class AddToCart(graphene.Mutation):
+    ''' Mutation For updation/deletion/addition of items in the cart. It takes two arguments:
+    1. item(id) to add item in the cart
+    2. quantity(int) to specify no of units for that item to add.
+    To differentiate Cart for multiple users this api/action is only for authenticated user.
 
-
-
-
-
-# # category --->
-# class CreateCategory(graphene.Mutation):
-#   class Arguments:
-#     name = graphene.String(required = True)
-  
-#   category = graphene.String()
-#   errors = graphene.List(graphene.String)
-#   success = graphene.Boolean()
-  
-  
-#   @permissions_checker([IsAuthenticated])
-#   def mutate(self, info, name):
-#     # create
-#     try: 
-#       if Category.objects.filter(name = name).exists() :
-#         raise Exception('Category Already Exists')
-#       category = Category(name=name)
-#       category.save()
-#       return CreateCategory(success=True, errors=None, category=name)
+     # if qantity argument is '0'  and the item is alreday present in the user's cart it will be removed from the cart if not present the nothing in the cart will be changed.
+     # if item is already present in the user's then it will be updated with qantity argument.
+     # if item not present in the user's cart it will be added.
+    '''
+    class Arguments:
+      item = graphene.ID(required = True)
+      quantity = graphene.Int(required = True)
     
-#     except Exception as e:
-#       return CreateCategory(success=False, errors=[str(e)], category=None)
-    
-# class UpdateCategory(graphene.Mutation):
-#   class Arguments:
-#     old_name = graphene.String(required = True)
-#     new_name = graphene.String(required = True)
-  
-#   category = graphene.String()
-#   errors = graphene.List(graphene.String)
-#   success = graphene.Boolean()
 
-#   @permissions_checker([IsAuthenticated])
-#   def mutate(self, info, old_name, new_name):
-#     # update 
-#     try : 
-#       category = Category.objects.get(name=old_name)
-#       category.name = new_name
-#       category.save()
-#       return UpdateCategory(success=True, errors=None, category=new_name)
-    
-#     except Exception as e:
-#       raise UpdateCategory(success=False, errors=[str(e)], category=None)
+    cart = graphene.List(CartType)
+    errors = graphene.List(graphene.String)
+    success = graphene.Boolean()
 
-# class DeleteCategory(graphene.Mutation):
-#   class Arguments:
-#        name = graphene.String(required = True)
-  
-#   found = graphene.Boolean()
-#   deleted_key = graphene.String()
-  
-#   @permissions_checker([AdminPermission])
-#   def mutate(self, info, name):
-#     try : 
-#       category = Category.objects.get(name=name)
-#       category.delete()
-#       return DeleteCategory(found = True, category=name)
-    
-#     except Exception as e:
-#       raise DeleteCategory(found = False, category=None)
-
-
-
-# # item --->
-# class CreateItems(mutations.DjangoBatchCreateMutation):
-#     class Meta:
-#       model = Item
-#       only_fields = ['name', 'category', 'price']
-#       optional_fields = ('category',)
-#       return_field_name = 'items'
-#       permissions = [AdminPermission]
-
-# class DeleteItems(mutations.DjangoBatchDeleteMutation):
-#   class Meta:
-#     model = Item
-#     permissions = [AdminPermission]
-
-# class UpdateItem(graphene.Mutation):
-#     class Arguments:
-#       id = graphene.ID(required = True)
-#       name = graphene.String()
-#       price = graphene.Int()
-#       deleted_categories = graphene.List(graphene.String)
-#       added_categories = graphene.List(graphene.String)
-  
-#     item = graphene.Field(ItemType)
-#     errors = graphene.List(graphene.String)
-#     success = graphene.Boolean()
-
-#     @permissions_checker([IsAuthenticated])
-#     def mutate(self, info, **kwargs):
-#       # update 
-#       try : 
-#         id = kwargs['id']
-#         name = kwargs.get('name')
-#         price = kwargs.get('price')
-#         deleted_categories = kwargs.get('deleted_categories', [])
-#         added_categories = kwargs.get('added_categories', [])
-#         item = Item.objects.get(id = id)
+    @permissions_checker([IsAuthenticated])
+    def mutate(self, info, **kwargs):
+      try : 
+        user = info.context.user
+        cart = Cart.objects.filter(user = user)
+        item = Item.objects.get(id = kwargs['item'])
+        quantity = kwargs['quantity']
+        cart_item = cart.filter(item = item).first()
+        cart = list(cart)
         
-#         if name:
-#           item.name = name
-        
-#         if price:
-#           item.price = price
-        
-#         if len(deleted_categories) != 0 and item.category:
-#           for category in deleted_categories:
-#             try :
-#               item.category.remove(category)
-#             except :
-#               continue
-            
-#         if len(added_categories) != 0:
-#           if not item.category :
-#             item.category = added_categories
-          
-#           else:
-#             for category in added_categories:
-#               try :
-#                   item.category.add(category)    
-#               except Exception as e:
-#                 continue
-            
-#         item.save()
-#         return UpdateItem(success=True, errors=None, item = item)
+        if cart_item :
+          cart.remove(cart_item)
+          if quantity == 0:
+            cart_item.delete()
+            return AddToCart(success = True, errors = None, cart = cart)
+
+          cart_item.quantity = quantity
+
+        elif quantity == 0:
+          return AddToCart(success = True, errors = None, cart = cart)
+
+        cart_item = Cart(item = item, user = user, quantity=quantity)
+        cart_item.save()
+        cart.append(cart_item)
+        return AddToCart(success=True, errors=None, cart = cart)
       
-#       except Exception as e:
-#         raise UpdateItem(success=False, errors=[str(e)], item = None)
+      except Exception as e:
+        return AddToCart(success=False, errors=[str(e)], cart = cart)
 
 
-# # menu
+
+
 class CartMutation(graphene.ObjectType):
   add_to_cart = AddToCart.Field()
-#   update_category = UpdateCategory.Field()
-#   delete_category = DeleteCategory.Field()
-#   create_items = CreateItems.Field()
-#   delete_items = DeleteItems.Field()
-#   update_item = UpdateItem.Field()
+
 

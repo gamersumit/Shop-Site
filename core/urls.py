@@ -25,11 +25,12 @@ from django.views.decorators.csrf import csrf_exempt
 from user.schema import AuthMutation, UserQuery
 from menu.schema import MenuMutation, MenuQuery
 from cart.schema import CartMutation, CartQuery
+from order.schema import OrderMutation, OrderQuery
 
-class Query(UserQuery, MenuQuery, CartQuery, graphene.ObjectType):
+class Query(UserQuery, MenuQuery, CartQuery, OrderQuery, graphene.ObjectType):
     pass
 
-class Mutation(AuthMutation, MenuMutation, CartMutation, graphene.ObjectType):
+class Mutation(AuthMutation, MenuMutation, CartMutation, OrderMutation, graphene.ObjectType):
    pass
 
 schema = graphene.Schema(query=Query, mutation=Mutation)

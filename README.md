@@ -258,6 +258,14 @@ me{
 
 <h4>Mutations</h4>
 
+<h5>LOGIN:</h5>
+<pre><code>mutation{
+tokenAuth(password: "********", username : "username"){
+  success
+  token
+}
+}</code></pre>
+
 <h5>Place Order:</h5>
 <pre><code>mutation {
 placeOrder {

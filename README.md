@@ -134,7 +134,7 @@ This project provides only the backend functionalities. A separate frontend appl
 </li>
 <li><h5>Menu Management</h5>
 <ul>
-<li><p>Admin users can create, update, and delete categories and items through the admin interface.</p></li>
+<li><p>Admin users can create, update, and delete categories and items.</p></li>
 </ul>
 </li>
 

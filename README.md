@@ -124,18 +124,33 @@ This project provides only the backend functionalities. A separate frontend appl
     </li>
 </ol>
 
-<h2>Usage:</h2>
-<h4>User Authentication</h4>
-<p>Users can register, log in, and verify their email addresses.</p>
+<h3>Usage:</h3>
+<ol>
+<li><h4>User Authentication</h4>
+<ul>  
+<li><p>Users can register, log in, and verify their email addresses.</p></l1>
+</ul>
+</li>
+<li><h4>Menu Management</h4>
+<ul>
+<li><p>Admin users can create, update, and delete categories and items through the admin interface.</p></li>
+</ul>
+</li>
 
-<h4>Menu Management</h4>
-<p>Admin users can create, update, and delete categories and items through the admin interface.</p>
 
-<h4>Shopping Cart</h4>
-<p>Users can add items to their cart, view the cart, and update quantities.</p>
+<li><h4>Shopping Cart</h4>
+<ul>  
+<li><p>Users can add items to their cart, view the cart, and update quantities.</p>
+</li>
+</ul>
+</li>
 
-<h4>Order Management</h4>
-<p>Users can place orders using the items in their cart. The PlaceOrder mutation is used to place an order. Users can query their single or multiple orders.</p>
+<li> <h4>Order Management</h4>
+<ul>
+<li><p>Users can place orders using the items in their cart. The PlaceOrder mutation is used to place an order. Users can query their single or multiple orders.</p></li>
+</ul>
+</li>
+</ol>
 
 <h3>GraphQL API</h3>
 

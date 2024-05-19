@@ -2,13 +2,29 @@
 
 <h3>Overview</h3>
 <p>
-        This project is an online shop site built using Django and GraphQL. It offers functionalities for user authentication, item and category management, shopping cart operations, and order processing. The admin has control over the menu items, while users can interact with the cart and place orders.
-    </p>
-    <h4>Note:</h4>
- <p>
-        This project provides only the backend functionalities. A separate frontend application would be needed to interact with this backend.
-    </p>
-
+This project is an online shop site built using Django and GraphQL. It offers functionalities for user authentication, item and category management, shopping cart operations, and order processing. The admin has control over the menu items, while users can interact with the cart and place orders.
+</p>
+<h4>Note:</h4>
+<p>
+This project provides only the backend functionalities. A separate frontend application would be needed to interact with this backend.
+</p>
+<h3>ScreenShots</h3>
+<table>
+  <tr>
+    <td>
+      <img src="Screenshots/1.jpg" width="200">
+    </td>
+    <td style="padding-left: 20px;">
+      <img src="Screenshots/2.jpg" width="200">
+    </td>
+    <td style="padding-left: 20px;">
+      <img src="Screenshots/3.jpg" width="200">
+    </td>
+    <td style="padding-left: 20px;">
+      <img src="Screenshots/4.jpg" width="200">
+    </td>
+  </tr>
+</table>
 <h3>Features</h3>
 <ol>
     <li>
@@ -199,18 +215,6 @@ addToCart(itemId: $itemId, quantity: $quantity) {
 }
 }</code></pre>
 
-<h3>Screenshots</h3>
-<p>Home Page</p>
-<img src="screenshots/home_page.png" alt="Home Page">
-
-<p>Menu Management</p>
-<img src="screenshots/menu_management.png" alt="Menu Management">
-
-<p>Shopping Cart</p>
-<img src="screenshots/shopping_cart.png" alt="Shopping Cart">
-
-<p>Order History</p>
-<img src="screenshots/order_history.png" alt="Order History">
 
 <h3>Contributing</h3>
 <ol>
@@ -221,7 +225,3 @@ addToCart(itemId: $itemId, quantity: $quantity) {
     <li>Create a pull request.</li>
 </ol>
 
-<h3>License</h3>
-<p>This project is licensed under the MIT License.</p>
-</body>
-</html>

@@ -66,7 +66,7 @@ This project provides only the backend functionalities. A separate frontend appl
         </ul>
     </li>
 </ol>
-
+<p><br><br><br><br></p>
 <h3>Technologies Used</h3>
 <ul>
     <li><h5>Django</h5></li>
@@ -74,7 +74,7 @@ This project provides only the backend functionalities. A separate frontend appl
     <li><h5>DjangoObjectType (Graphene-Django)</h5></li>
     <li><h5>SQL</h5></li>
 </ul>
-
+<p><br><br><br><br></p>
 <h3>Installation (MAC/LINUX/WINDOWS):</h3>
 <ol>
     <li>
@@ -123,35 +123,35 @@ This project provides only the backend functionalities. A separate frontend appl
         </ul>
     </li>
 </ol>
-
+<p><br><br><br><br></p>
 <h3>Usage:</h3>
 <ol>
-<li><h4>User Authentication</h4>
+<li><h5>User Authentication</h5>
 <ul>  
 <li><p>Users can register, log in, and verify their email addresses.</p></l1>
 </ul>
 </li>
-<li><h4>Menu Management</h4>
+<li><h5>Menu Management</h5>
 <ul>
 <li><p>Admin users can create, update, and delete categories and items through the admin interface.</p></li>
 </ul>
 </li>
 
 
-<li><h4>Shopping Cart</h4>
+<li><h5>Shopping Cart</h5>
 <ul>  
 <li><p>Users can add items to their cart, view the cart, and update quantities.</p>
 </li>
 </ul>
 </li>
 
-<li> <h4>Order Management</h4>
+<li> <h5>Order Management</h5>
 <ul>
 <li><p>Users can place orders using the items in their cart. The PlaceOrder mutation is used to place an order. Users can query their single or multiple orders.</p></li>
 </ul>
 </li>
 </ol>
-
+<p><br><br><br><br></p>
 <h3>GraphQL API</h3>
 
 <h4>Queries</h4>

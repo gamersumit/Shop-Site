@@ -18,7 +18,7 @@ This project is an online shop site built using Django and GraphQL. It offers fu
 <h5> Category and Item models </h5>
 <h5> Only admins can create, update, and delete (CUD) categories and items </h5>
 </ul>    
-
+</ol>
 
 <h4>   3. Shopping Cart: </h4>
 

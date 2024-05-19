@@ -1,59 +1,80 @@
 # Shop Site Project : 
 
-# Overview 
+<h3>Overview</h3>
 
 This project is an online shop site built using Django and GraphQL. It offers functionalities for user authentication, item and category management, shopping cart operations, and order processing. The admin has control over the menu items, while users can interact with the cart and place orders.
 
-<h1>Note: </h1> This project provides only the backend functionalities. A separate frontend application would be needed to interact with this backend.
+<h4>Note: </h4> This project provides only the backend functionalities. A separate frontend application would be needed to interact with this backend.
 
-Features
-User Authentication:
+<h3> Features </h3>
+<h4> 1. User Authentication:</h4>
 
-User login and registration
-Email verification
-Menu Management:
+<h5> > User login and registration </h5>
+<h5> > Email verification </h5>
 
-Category and Item models
-Only admins can create, update, and delete (CUD) categories and items
-Shopping Cart:
+<h4> 2. Menu Management: </h4>
 
-Fetch cart items
-Add items to cart
-Unique cart for each user
-Order Management:
+<h5> > Category and Item models </h5>
+<h5> > Only admins can create, update, and delete (CUD) categories and items </h5>
 
-Place orders using the cart
-Cart is emptied after placing an order
-GraphQL mutation for placing an order (PlaceOrder)
-Query single and multiple orders
-Batch Create Items:
+<h4> 3. Shopping Cart: </h4>
 
-Batch creation of items
-Items can belong to multiple categories
-Technologies Used
-Django
-GraphQL
-DjangoObjectType (Graphene-Django)
-PostgreSQL (or any preferred database)
-Installation
-Clone the repository:
+<h5> > Fetch cart items </h5>
+<h5> > Add items to cart </h5>
+<h5> > Unique cart for each user </h5>
 
-bash
-Copy code
-git clone <repository_url>
-cd shop-site
-Create and activate a virtual environment:
+<h4> 4. Order Management: </h4>
 
-bash
-Copy code
-python3 -m venv env
-source env/bin/activate
-Install dependencies:
+<h5> > Place orders using the cart</h5>
+<h5> > Cart is emptied after placing an order</h5>
+<h5> > GraphQL mutation for placing an order (PlaceOrder)</h5>
+<h5> > Query single and multiple orders</h5>
 
-bash
-Copy code
-pip install -r requirements.txt
-Set up the database:
+
+<h4> 5. Batch Create Items:</h4>
+
+<h5> > Batch creation of items</h5>
+<h5> > Items can belong to multiple categories</h5>
+
+<h3> Technologies Used </h3>
+
+<h5> > Django</h5>
+<h5> > GraphQL</h5>
+<h5> > DjangoObjectType (Graphene-Django)</h5>
+<h5> > SQL </h5>
+
+
+
+
+<h3> Installation :- </h3>
+<h4> > MAC/LINUX/WINDOWS</h4>
+<h5> 1. Clone the repository:</h5>    
+<h6> => git clone <repository_url></h6>
+<h6> => cd shop-site</h6>
+
+<h5> 2. Create and activate a virtual environment: </h5>
+<h6>MAC => python3 -m venv env</h6>
+<h6>LINUX/WIN => python -m venv env</h6>
+<h6>MAC/LINUX => source env/bin/activate</h6>
+<h6>WIN => env/script/activate</h6>
+
+<h5> 3. Install dependencies:</h5>
+<h6>WIN/LINUX=> pip install -r requirements.txt</h6>
+<h6>MAC=> pip3 install -r requirements.txt</h6>
+
+<h5> 4. Make .env file</h5>
+
+<h5> 5. Set up the database:</h5>
+<h6> => python manage.py makemigrations</h6>
+<h6> => python manage.py migrate</h6>
+
+
+<h5> 6. Create a superuser:</h5>
+<h6> => python manage.py createsuperuser</h6>
+
+<h5> 7. Run the development server:</h5>
+<h6> =>python manage.py runserver</h6>
+
 
 bash
 Copy code

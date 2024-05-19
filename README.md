@@ -31,6 +31,7 @@ This project provides only the backend functionalities. A separate frontend appl
         <h4>User Authentication:</h4>
         <ul>
             <li><h5>User login and registration</h5></li>
+            <li><h5>JWT Token Authentication</h5></li>
             <li><h5>Email verification</h5></li>
         </ul>
     </li>
@@ -153,51 +154,108 @@ This project provides only the backend functionalities. A separate frontend appl
 </ol>
 <p><br><br></p>
 <h3>GraphQL API</h3>
-
+<h4>Headers</h4>
+<ul>
+  <li>Authorization : JWT XXXXXXTOKENXXXXXXXXX</li>
+</ul>
+<br>
 <h4>Queries</h4>
 
 <h5>Fetch Cart:</h5>
 <pre><code>query {
-cart {
+  cart {
     id
-    items {
-        id
-        item {
+    item {
+            id
             name
             price
         }
         quantity
-    }
 }
 }</code></pre>
 
 <h5>Fetch Single Order:</h5>
-<pre><code>query($id: UUID!) {
-order(id: $id) {
+<pre><code>query{
+orderDetails(id: $id) {
     id
     orderedAt
     subtotalAmount
     taxAmount
+    taxRate
     discountAmount
+    discountRate
     totalAmount
-    orderItems {
-        id
-        item {
-            name
-        }
-        quantity
-        price
+    orderItems{
+      item{
+        name
+      }
+      price
+      quantity
     }
+  }
 }
 }</code></pre>
 
 <h5>Fetch Multiple Orders:</h5>
 <pre><code>query {
-orders {
-    id
+ordersDetails{
     orderedAt
+    subtotalAmount
+    taxAmount
+    taxRate
+    discountAmount
+    discountRate
     totalAmount
-}
+    orderItems{
+      item{
+        name
+      }
+      price
+      quantity
+    }
+  }
+}</code></pre>
+
+<h5>Fetch All Categories:</h5>
+<pre><code>query {
+categories{
+    name
+    items{
+    id
+    name
+    price
+  }
+}</code></pre>
+
+<h5>Fetch All Items:</h5>
+<pre><code>query {
+items{
+    id
+    name
+    price
+    category{
+    name
+    }
+}</code></pre>
+
+<h4>Mutations</h4>
+
+<h5>Current User Details:</h5>
+<pre><code>query {
+me{
+    id
+    username
+    firstname
+    lastname
+    isStaff
+    isActive
+    dateJoined
+    email
+    pk
+    archived
+    verified
+    secondaryEmail
+  }
 }</code></pre>
 
 <h4>Mutations</h4>

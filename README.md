@@ -8,36 +8,43 @@ This project is an online shop site built using Django and GraphQL. It offers fu
 
 <h3> Features </h3>
 <ol>
-<li><h4> User Authentication:</h4></li>
+<li><h4> User Authentication:</h4>
 <ul>
 <li><h5> User login and registration </h5></li>
 <li><h5> Email verification </h5></li
 </ul>
-<li><h4> Menu Management: </h4></li>
+</li>
+<li><h4> Menu Management: </h4>
 <ul>
 <h5> Category and Item models </h5>
 <h5> Only admins can create, update, and delete (CUD) categories and items </h5>
-</ul>    
+</ul>
+</li>    
+<li>
+<h4> Shopping Cart: </h4>
+<ul>
+<li><h5> Fetch cart items </h5></li>
+<li> <h5> Add items to cart </h5></li>
+<li> <h5>  Unique cart for each user </h5></li>
+</ul>
+</li>
+    
+<li><h4>   4. Order Management: </h4>
+<ul>
+<li> <h5> Place orders using the cart</h5></li>
+<li> <h5> Cart is emptied after placing an order</h5></li>
+<li> <h5> GraphQL mutation for placing an order (PlaceOrder)</h5></li>
+<li> <h5> Query single and multiple orders</h5></li>
+</ul>
+</li>
+
+<li><h4>   5. Batch Create Items:</h4>
+<ul>
+<li> <h5> Batch creation of items</h5></li>
+<li><h5> Items can belong to multiple categories</h5></li>
+</ul>
+</li>
 </ol>
-
-<h4>   3. Shopping Cart: </h4>
-
-<h5>      > Fetch cart items </h5>
-<h5>      > Add items to cart </h5>
-<h5>      > Unique cart for each user </h5>
-
-<h4>   4. Order Management: </h4>
-
-<h5>      > Place orders using the cart</h5>
-<h5>      > Cart is emptied after placing an order</h5>
-<h5>      > GraphQL mutation for placing an order (PlaceOrder)</h5>
-<h5>      > Query single and multiple orders</h5>
-
-
-<h4>   5. Batch Create Items:</h4>
-
-<h5>      > Batch creation of items</h5>
-<h5>      > Items can belong to multiple categories</h5>
 
 
 <h3> Technologies Used </h3>

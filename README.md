@@ -258,11 +258,32 @@ me{
 
 <h4>Mutations</h4>
 
+<h5>REGISTER:</h5>
+<pre><code>mutation{
+    register(email: "example@gmail.com", username : "username", password1 : "********",
+password2 : "********"            
+            ){
+      success
+      errors
+      token
+      refreshToken
+  }
+}</code></pre>
+
 <h5>LOGIN:</h5>
 <pre><code>mutation{
 tokenAuth(password: "********", username : "username"){
   success
+  errors
+  unarchiving
   token
+  refreshToken
+  user{
+  id
+  username
+  email
+  datejoined
+  }
 }
 }</code></pre>
 

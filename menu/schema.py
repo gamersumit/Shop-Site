@@ -25,6 +25,7 @@ class CategoryType(DjangoObjectType):
       fields= ('name', 'items')
       
   def resolve_items(self, info):
+    
       return self.item.filter(is_deleted = False)
 
 class MenuQuery(graphene.ObjectType):
@@ -126,7 +127,7 @@ class UpdateItem(graphene.Mutation):
     class Arguments:
       id = graphene.ID(required = True)
       name = graphene.String()
-      price = graphene.Int()
+      price = graphene.Int() 
       deleted_categories = graphene.List(graphene.String)
       added_categories = graphene.List(graphene.String)
   

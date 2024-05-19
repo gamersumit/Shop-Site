@@ -14,6 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 from datetime import timedelta
+from decimal import  Decimal 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -195,8 +196,6 @@ GRAPHQL_JWT = {
 
 
 
-
-
 # # MAIL
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAI_HOST = os.getenv('EMAI_HOST')
@@ -204,3 +203,8 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER') 
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+
+# Tax rate
+TAX_RATE = Decimal( os.getenv('TAX_RATE', 5.0))
+DISCOUNT_RATE = Decimal(os.getenv('DISCOUNT_RATE', 0.0))

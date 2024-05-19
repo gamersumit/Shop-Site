@@ -238,8 +238,6 @@ items{
     }
 }</code></pre>
 
-<h4>Mutations</h4>
-
 <h5>Current User Details:</h5>
 <pre><code>query {
 me{

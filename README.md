@@ -1,106 +1,140 @@
-# Shop Site Project : 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Site Project</title>
+</head>
+<body>
+    <h1>Shop Site Project</h1>
 
-<h3>Overview</h3>
+    <h3>Overview</h3>
+    <p>
+        This project is an online shop site built using Django and GraphQL. It offers functionalities for user authentication, item and category management, shopping cart operations, and order processing. The admin has control over the menu items, while users can interact with the cart and place orders.
+    </p>
+    <h4>Note:</h4>
+    <p>
+        This project provides only the backend functionalities. A separate frontend application would be needed to interact with this backend.
+    </p>
 
-This project is an online shop site built using Django and GraphQL. It offers functionalities for user authentication, item and category management, shopping cart operations, and order processing. The admin has control over the menu items, while users can interact with the cart and place orders.
+    <h3>Features</h3>
+    <ol>
+        <li>
+            <h4>User Authentication:</h4>
+            <ul>
+                <li><h5>User login and registration</h5></li>
+                <li><h5>Email verification</h5></li>
+            </ul>
+        </li>
+        <li>
+            <h4>Menu Management:</h4>
+            <ul>
+                <li><h5>Category and Item models</h5></li>
+                <li><h5>Only admins can create, update, and delete (CUD) categories and items</h5></li>
+            </ul>
+        </li>
+        <li>
+            <h4>Shopping Cart:</h4>
+            <ul>
+                <li><h5>Fetch cart items</h5></li>
+                <li><h5>Add items to cart</h5></li>
+                <li><h5>Unique cart for each user</h5></li>
+            </ul>
+        </li>
+        <li>
+            <h4>Order Management:</h4>
+            <ul>
+                <li><h5>Place orders using the cart</h5></li>
+                <li><h5>Cart is emptied after placing an order</h5></li>
+                <li><h5>GraphQL mutation for placing an order (PlaceOrder)</h5></li>
+                <li><h5>Query single and multiple orders</h5></li>
+            </ul>
+        </li>
+        <li>
+            <h4>Batch Create Items:</h4>
+            <ul>
+                <li><h5>Batch creation of items</h5></li>
+                <li><h5>Items can belong to multiple categories</h5></li>
+            </ul>
+        </li>
+    </ol>
 
-<h4>Note: </h4> This project provides only the backend functionalities. A separate frontend application would be needed to interact with this backend.
+    <h3>Technologies Used</h3>
+    <ul>
+        <li><h5>Django</h5></li>
+        <li><h5>GraphQL</h5></li>
+        <li><h5>DjangoObjectType (Graphene-Django)</h5></li>
+        <li><h5>SQL</h5></li>
+    </ul>
 
-<h3> Features </h3>
-<ol>
-<li><h4> User Authentication:</h4>
-<ul>
-<li><h5> User login and registration </h5></li>
-<li><h5> Email verification </h5></li
-</ul>
-</li>
-<li><h4> Menu Management: </h4>
-<ul>
-<h5> Category and Item models </h5>
-<h5> Only admins can create, update, and delete (CUD) categories and items </h5>
-</ul>
-</li>    
-<li>
-<h4> Shopping Cart: </h4>
-<ul>
-<li><h5> Fetch cart items </h5></li>
-<li> <h5> Add items to cart </h5></li>
-<li> <h5>  Unique cart for each user </h5></li>
-</ul>
-</li>
+    <h3>Installation (MAC/LINUX/WINDOWS):</h3>
+    <ol>
+        <li>
+            <h5>Clone the repository:</h5>
+            <ul>
+                <li><h6>git clone &lt;repository_url&gt;</h6></li>
+                <li><h6>cd shop-site</h6></li>
+            </ul>
+        </li>
+        <li>
+            <h5>Create and activate a virtual environment:</h5>
+            <ul>
+                <li><h6>MAC: python3 -m venv env</h6></li>
+                <li><h6>LINUX/WIN: python -m venv env</h6></li>
+                <li><h6>MAC/LINUX: source env/bin/activate</h6></li>
+                <li><h6>WIN: env\Scripts\activate</h6></li>
+            </ul>
+        </li>
+        <li>
+            <h5>Install dependencies:</h5>
+            <ul>
+                <li><h6>WIN/LINUX: pip install -r requirements.txt</h6></li>
+                <li><h6>MAC: pip3 install -r requirements.txt</h6></li>
+            </ul>
+        </li>
+        <li>
+            <h5>Make .env file</h5>
+        </li>
+        <li>
+            <h5>Set up the database:</h5>
+            <ul>
+                <li><h6>python manage.py makemigrations</h6></li>
+                <li><h6>python manage.py migrate</h6></li>
+            </ul>
+        </li>
+        <li>
+            <h5>Create a superuser:</h5>
+            <ul>
+                <li><h6>python manage.py createsuperuser</h6></li>
+            </ul>
+        </li>
+        <li>
+            <h5>Run the development server:</h5>
+            <ul>
+                <li><h6>python manage.py runserver</h6></li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Usage:</h2>
+    <h4>User Authentication</h4>
+    <p>Users can register, log in, and verify their email addresses.</p>
     
-<li><h4>   4. Order Management: </h4>
-<ul>
-<li> <h5> Place orders using the cart</h5></li>
-<li> <h5> Cart is emptied after placing an order</h5></li>
-<li> <h5> GraphQL mutation for placing an order (PlaceOrder)</h5></li>
-<li> <h5> Query single and multiple orders</h5></li>
-</ul>
-</li>
+    <h4>Menu Management</h4>
+    <p>Admin users can create, update, and delete categories and items through the admin interface.</p>
+    
+    <h4>Shopping Cart</h4>
+    <p>Users can add items to their cart, view the cart, and update quantities.</p>
+    
+    <h4>Order Management</h4>
+    <p>Users can place orders using the items in their cart. The PlaceOrder mutation is used to place an order. Users can query their single or multiple orders.</p>
 
-<li><h4>   5. Batch Create Items:</h4>
-<ul>
-<li> <h5> Batch creation of items</h5></li>
-<li><h5> Items can belong to multiple categories</h5></li>
-</ul>
-</li>
-</ol>
+    <h3>GraphQL API</h3>
 
+    <h4>Queries</h4>
 
-<h3> Technologies Used </h3>
-
-<h5>   > Django</h5>
-<h5>   > GraphQL</h5>
-<h5>   > DjangoObjectType (Graphene-Django)</h5>
-<h5>   > SQL </h5>
-
-
-<h3> Installation(MAC/LINUX/WINDOWS) :- </h3>
-<h5>   1. Clone the repository:</h5>    
-<h6>      => git clone <repository_url></h6>
-<h6>      => cd shop-site</h6>
-
-<h5>   2. Create and activate a virtual environment: </h5>
-<h6>      MAC => python3 -m venv env</h6>
-<h6>      LINUX/WIN => python -m venv env</h6>
-<h6>      MAC/LINUX => source env/bin/activate</h6>
-<h6>      WIN => env/script/activate</h6>
-
-<h5>   3. Install dependencies:</h5>
-<h6>      WIN/LINUX => pip install -r requirements.txt</h6>
-<h6>      MAC => pip3 install -r requirements.txt</h6>
-
-<h5>   4. Make .env file</h5>
-
-<h5>   5. Set up the database:</h5>
-<h6>      => python manage.py makemigrations</h6>
-<h6>      => python manage.py migrate</h6>
-
-
-<h5>   6. Create a superuser:</h5>
-<h6>      => python manage.py createsuperuser</h6>
-
-<h5>   7. Run the development server:</h5>
-<h6>      => python manage.py runserver</h6>
-
-<h2>Usage:</h2>
-<h4>  User Authentication <h4>
-Users can register, log in, and verify their email addresses.
-Menu Management
-Admin users can create, update, and delete categories and items through the admin interface.
-Shopping Cart
-Users can add items to their cart, view the cart, and update quantities.
-Order Management
-Users can place orders using the items in their cart.
-The PlaceOrder mutation is used to place an order.
-Users can query their single or multiple orders.
-GraphQL API
-Queries
-Fetch Cart:
-
-graphql
-Copy code
-query {
+    <h5>Fetch Cart:</h5>
+    <pre><code>query {
     cart {
         id
         items {
@@ -112,12 +146,10 @@ query {
             quantity
         }
     }
-}
-Fetch Single Order:
+}</code></pre>
 
-graphql
-Copy code
-query($id: UUID!) {
+    <h5>Fetch Single Order:</h5>
+    <pre><code>query($id: UUID!) {
     order(id: $id) {
         id
         orderedAt
@@ -134,24 +166,21 @@ query($id: UUID!) {
             price
         }
     }
-}
-Fetch Multiple Orders:
+}</code></pre>
 
-graphql
-Copy code
-query {
+    <h5>Fetch Multiple Orders:</h5>
+    <pre><code>query {
     orders {
         id
         orderedAt
         totalAmount
     }
-}
-Mutations
-Place Order:
+}</code></pre>
 
-graphql
-Copy code
-mutation {
+    <h4>Mutations</h4>
+
+    <h5>Place Order:</h5>
+    <pre><code>mutation {
     placeOrder {
         order {
             id
@@ -159,12 +188,10 @@ mutation {
             totalAmount
         }
     }
-}
-Add to Cart:
+}</code></pre>
 
-graphql
-Copy code
-mutation($itemId: ID!, $quantity: Int!) {
+    <h5>Add to Cart:</h5>
+    <pre><code>mutation($itemId: ID!, $quantity: Int!) {
     addToCart(itemId: $itemId, quantity: $quantity) {
         cart {
             id
@@ -178,19 +205,31 @@ mutation($itemId: ID!, $quantity: Int!) {
             }
         }
     }
-}
-Screenshots
-Home Page
+}</code></pre>
 
-Menu Management
+    <h3>Screenshots</h3>
+    <p>Home Page</p>
+    <img src="screenshots/home_page.png" alt="Home Page">
 
-Shopping Cart
+    <p>Menu Management</p>
+    <img src="screenshots/menu_management.png" alt="Menu Management">
 
-Order History
+    <p>Shopping Cart</p>
+    <img src="screenshots/shopping_cart.png" alt="Shopping Cart">
 
-Contributing
-Fork the repository.
-Create a new branch for your feature or bugfix.
-Commit your changes.
-Push to your branch.
-Create a pull request.
+    <p>Order History</p>
+    <img src="screenshots/order_history.png" alt="Order History">
+
+    <h3>Contributing</h3>
+    <ol>
+        <li>Fork the repository.</li>
+        <li>Create a new branch for your feature or bugfix.</li>
+        <li>Commit your changes.</li>
+        <li>Push to your branch.</li>
+        <li>Create a pull request.</li>
+    </ol>
+
+    <h3>License</h3>
+    <p>This project is licensed under the MIT License.</p>
+</body>
+</html>

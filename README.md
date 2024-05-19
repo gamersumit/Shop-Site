@@ -270,6 +270,62 @@ password2 : "********"
   }
 }</code></pre>
 
+<h5>VERIFY ACCOUNT:</h5>
+<pre><code>mutation{
+    verifyAccount(token: "xxxxxxxTOKENxxxxxxxxx"            
+            ){
+      success
+      errors
+  }
+}</code></pre>
+
+<h5>UPDATE ACCOUNT:</h5>
+<pre><code>mutation{
+    updateAccount(firstName : "first"
+      lastName : "last"       
+            ){
+      success
+      errors
+  }
+}</code></pre>
+
+<h5>RESEND ACTIVATION EMAIL:</h5>
+<pre><code>mutation{
+   resendActivationEmail(email: "youremail@gmail.com"     
+            ){
+      success
+      errors
+  }
+}</code></pre>
+
+<h5>PASSWORD RESET EMAIL:</h5>
+<pre><code>mutation{
+    updateAccount(email: "youremail@gmail.com"      
+            ){
+      success
+      errors
+  }
+}</code></pre>
+
+<h5>PASSWORD RESET:</h5>
+<pre><code>mutation{
+    updateAccount(token: "xxxxxxxxxxTOKENxxxxxxxxx", newPassword1 : "********", newPassword2 : "********"     
+            ){
+      success
+      errors
+  }
+}</code></pre>
+
+<h5>PASSWORD CHANGE:</h5>
+<pre><code>mutation{
+    updateAccount(oldPassword: "*********", newPassword1 : "********", newPassword2 : "********"     
+            ){
+      success
+      errors
+  }
+}</code></pre>
+
+
 <h5>LOGIN:</h5>
 <pre><code>mutation{
 tokenAuth(password: "********", username : "username"){

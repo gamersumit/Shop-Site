@@ -7,15 +7,18 @@ This project is an online shop site built using Django and GraphQL. It offers fu
 <h4>Note: </h4> This project provides only the backend functionalities. A separate frontend application would be needed to interact with this backend.
 
 <h3> Features </h3>
-<h4>   1. User Authentication:</h4>
+<ol>
+<li><h4> User Authentication:</h4></li>
+<ul>
+<li><h5> User login and registration </h5></li>
+<li><h5> Email verification </h5></li
+</ul>
+<li><h4> Menu Management: </h4></li>
+<ul>
+<h5> Category and Item models </h5>
+<h5> Only admins can create, update, and delete (CUD) categories and items </h5>
+</ul>    
 
-<h5>      > User login and registration </h5>
-<h5>      > Email verification </h5>
-
-<h4>   2. Menu Management: </h4>
-
-<h5>      > Category and Item models </h5>
-<h5>      > Only admins can create, update, and delete (CUD) categories and items </h5>
 
 <h4>   3. Shopping Cart: </h4>
 
@@ -57,8 +60,8 @@ This project is an online shop site built using Django and GraphQL. It offers fu
 <h6>      WIN => env/script/activate</h6>
 
 <h5>   3. Install dependencies:</h5>
-<h6>      WIN/LINUX=> pip install -r requirements.txt</h6>
-<h6>      MAC=> pip3 install -r requirements.txt</h6>
+<h6>      WIN/LINUX => pip install -r requirements.txt</h6>
+<h6>      MAC => pip3 install -r requirements.txt</h6>
 
 <h5>   4. Make .env file</h5>
 
@@ -71,10 +74,10 @@ This project is an online shop site built using Django and GraphQL. It offers fu
 <h6>      => python manage.py createsuperuser</h6>
 
 <h5>   7. Run the development server:</h5>
-<h6>     => python manage.py runserver</h6>
+<h6>      => python manage.py runserver</h6>
 
-Usage
-User Authentication
+<h2>Usage:</h2>
+<h4>  User Authentication <h4>
 Users can register, log in, and verify their email addresses.
 Menu Management
 Admin users can create, update, and delete categories and items through the admin interface.

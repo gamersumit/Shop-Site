@@ -72,17 +72,22 @@ This project provides only the backend functionalities. A separate frontend appl
 <ul>
     <li>
         <h5>
-            <img src="icons/django.png" alt="Django" width="24" height="24"> Django
+  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="PythonL" width="24" height="24" /> Django
         </h5>
     </li>
     <li>
         <h5>
-            <img src="icons/graphql.png" alt="GraphQL" width="24" height="24"> GraphQL
+            <img src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL" width="24" height="24"/> GraphQL
         </h5>
     </li>
     <li>
         <h5>
-            <img src="icons/python.png" alt="Python" width="24" height="24"> Python
+            <img src="https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt = "Python"  width="24" height="24" /> Python
+        </h5>
+    </li>
+    <li>
+        <h5>
+            <img src="https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt = "Postgres SQL"  width="24" height="24" /> Postgres SQL
         </h5>
     </li>
     <li>

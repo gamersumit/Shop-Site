@@ -70,10 +70,25 @@ This project provides only the backend functionalities. A separate frontend appl
 <p><br><br></p>
 <h3>Technologies Used</h3>
 <ul>
-    <li><h5>Django</h5></li>
-    <li><h5>GraphQL</h5></li>
-    <li><h5>DjangoObjectType (Graphene-Django)</h5></li>
-    <li><h5>SQL</h5></li>
+    <li>
+        <h5>
+            <img src="icons/django.png" alt="Django" width="24" height="24"> Django
+        </h5>
+    </li>
+    <li>
+        <h5>
+            <img src="icons/graphql.png" alt="GraphQL" width="24" height="24"> GraphQL
+        </h5>
+    </li>
+    <li>
+        <h5>
+            <img src="icons/python.png" alt="Python" width="24" height="24"> Python
+        </h5>
+    </li>
+    <li>
+        <h5>DjangoObjectType (Graphene-Django)</h5></li>
+    <li>
+        <h5>SQL</h5></li>
 </ul>
 <p><br><br></p>
 <h3>Installation (MAC/LINUX/WINDOWS):</h3>

@@ -77,7 +77,7 @@ This project provides only the backend functionalities. A separate frontend appl
     </li>
     <li>
         <h5>
-            <img src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL" width="24" height="24"/> GraphQL
+            <img src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL" width="24" height="24"/> GraphQL APIs
         </h5>
     </li>
     <li>
